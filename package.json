@@ -1,0 +1,22 @@
+{
+  "name": "clinic-test",
+  "version": "1.0.0",
+  "description": "A dashboard for doctors to access an overview of a patients health records.",
+  "main": "index.js",
+  "dependencies": {
+    "gh-pages": "^6.1.1"
+  },
+  "scripts": {
+    "test": "test",
+    "deploy": "gh-pages -d ."
+  },
+  "repository": {
+    "type": "git",
+    "url": "clinic-dashboard"
+  },
+  "keywords": [
+    "health"
+  ],
+  "author": "Dennis Ngetich",
+  "license": "ISC"
+}

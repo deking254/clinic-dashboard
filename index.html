@@ -1,0 +1,313 @@
+<!Doctype>
+<html>
+<head>
+ <link rel="stylesheet" href="./styles.css"></link>
+ <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+<div class="header">
+    <div class="logo"></div>
+    <div class="nav">
+        <div class="overview-container">
+            <div class="overview-logo"></div>
+            <div class="overview">Overview</div>
+        </div>
+        <div class="active-nav">
+            
+            <div class="patients-container">
+                <div class="patients-logo"></div>
+                <div class="patients-tab">Patients</div>
+            </div>
+        </div>
+        <div class="schedule-container">
+            <div class="schedule-logo"></div>
+            <div class="schedule">Schedule</div>
+        </div>
+        <div class="message-container">
+            <div class="message-logo"></div>
+            <div class="message">Message</div>
+        </div>
+        <div class="transactions-container">
+            <div class="transactions-logo"></div>
+            <div class="transactions">Transactions</div>
+        </div>
+    </div>
+    <div class="right">
+        <div class="user-profile-pic"></div>
+        <div class="name-and-title">
+            <div class="dr-joe-simmons">Dr. Jose Simmons</div>
+            <div class="general-practitioner">General Practitioner</div>
+        </div>
+        <div class="settings"></div>
+        <div class="vertical-elipsis"></div>
+    </div>
+</div>
+<div class="body">
+<div class="patients">
+    <div class="title-and-search">
+        <div class="patients-title">Patients</div>
+        <div class="patients-search-button"></div>
+    </div>
+  <ul id="patient-list">
+    <!-- <div class="patients-list-item-container">
+        <div class="pic-age">
+            <div class="patient-picture"></div>
+            <div class="name-sex-demographic">
+                <div class="patient-name">Emily Williams</div>
+                <div class="sex-demographics">Female, 18</div>
+            </div>
+        </div>
+        <div class="horizontal-elipsis"></div>
+    </div> -->
+  </ul>
+</div>
+<div class="diagnosis">
+    <div class="diagnosis-history">
+        <div class="diagnosis-history-title">Diagnosis History</div>
+        <div class="chart">
+            <canvas id="myChart"></canvas>
+        </div>
+        <div class="respiratory-temp-heart">
+            <div class="respiratory">
+                <div class="respiratory-info">
+                    <div class="respiratory-pic"></div>
+                    <div class="respiratory-rate-text">Respiratory Rate</div>
+                    <div id = "respiratory-value" class="value-respiratory">bpm</div>
+                    <div class="critical-level-respiratory">Normal</div>
+                </div>
+            </div>
+            <div class="temperature">
+                <div class="temperature-info">
+                    <div class="temperature-pic"></div>
+                    <div class="temperature-title-text">Temperature</div>
+                    <div id = "temperature-value" class="value-temperature">°F</div>
+                    <div class="critical-level-temperature">Normal</div>
+                </div>
+            </div>
+            <div class="heart-rate">
+                <div class="heart-info">
+                    <div class="heart-pic"></div>
+                    <div class="heart-title-text">Heart Rate</div>
+                    <div id="heart-value" class="value-heart">bpm</div>
+                    <div class="critical-level-heart">Lower that normal</div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="diagnostic-list">
+        <div class="diagnostic-list-title">Diagnostic List</div>
+        <div class="table-outer-container-data ">
+            <div class="table-header-container">
+                <div class="problem">Problem/Diagnosis</div>
+                <div class="description">Description</div>
+                <div class="status">Status</div>
+            </div>
+            <div class="scroll-group-diagnostic-list">
+                <table>
+                    <tbody id="diagnostic-table-body">
+
+                    </tbody>
+                    
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="results">
+<div class="patient-details">
+    <div id="details-picture" class="patient-profile-pic"></div>
+    <div id ="details-patient-name" class="patient-details-name"></div>
+    <div class="dob-container">
+        <div class="dob-icon-circle">
+            <div class="dob-icon"></div>
+        </div>
+        <div class="title-details-container">
+            <div class="details-title">Date Of Birth</div>
+            <div id="dob-value-id" class="details-value"></div>
+        </div>
+    </div>
+    <div class="dob-container">
+        <div class="dob-icon-circle">
+            <div id="gender-icon-id" class="male-gender-icon"></div>
+        </div>
+        <div class="title-details-container">
+            <div class="details-title">Gender</div>
+            <div id="gender-value-id" class="details-value"></div>
+        </div>
+    </div>
+    <div class="dob-container">
+        <div class="dob-icon-circle">
+            <div class="contact-icon"></div>
+        </div>
+        <div class="title-details-container">
+            <div class="details-title">Contact info.</div>
+            <div id="contact-value-id" class="details-value"></div>
+        </div>
+    </div>
+    <div class="dob-container">
+        <div class="dob-icon-circle">
+            <div class="emergency-icon"></div>
+        </div>
+        <div class="title-details-container">
+            <div class="details-title">Emergency Contacts</div>
+            <div id="emergency-value-id" class="details-value"></div>
+        </div>
+    </div>
+    <div class="dob-container">
+        <div class="dob-icon-circle">
+            <div class="insurance-icon"></div>
+        </div>
+        <div class="title-details-container">
+            <div class="details-title">Insurance Provider</div>
+            <div id="insurance-value-id" class="details-value"></div>
+        </div>
+    </div>
+    <div class="show-all-info">
+        <div class="show-all-info-text">Show All Information</div>
+    </div>
+</div>
+<div class="lab-results">
+    <div class="lab-results-title">Lab Results</div>
+    <div class="scroll-lab-results-data">
+        <ul id="tests-id">
+
+        </ul>
+    </div>
+</div>
+
+</div>
+</div>
+</body>
+<script>
+      document.addEventListener('DOMContentLoaded', () => {
+        const apiUrl = "https://fedskillstest.coalitiontechnologies.workers.dev";
+        const username = "coalition";
+        const password = "skills-test";
+        const basicAuthToken = btoa(`${username}:${password}`);
+        const fetchData = async () => {
+                try {
+                    const response = await fetch(apiUrl, {
+                        headers: {
+                            'Authorization': `Basic ${basicAuthToken}`,
+                            'Content-Type': 'application/json'
+                        }
+                    });
+
+                    if (!response.ok) {
+                        throw new Error('Network response was not ok');
+                    }
+
+                    const data = await response.json();
+                    const jess = [];
+                    const months_year_label = []
+                    const systolic = [];
+                    const diastolic = []
+                    data.forEach(item => {
+                        if (item.name === "Jessica Taylor"){
+                            jess.push(item)
+                            console.log(JSON.stringify(item))
+                            let i = 0;
+                            item.diagnosis_history.forEach(diagnosis=>{
+                                if (i <= 6){
+                        months_year_label.push(`${diagnosis.month.slice(0,3)} ${diagnosis.year}`);
+                        systolic.push(diagnosis.blood_pressure.systolic.value);
+                        diastolic.push(diagnosis.blood_pressure.diastolic.value);
+                                }
+                                i += 1;
+                    })
+                        }
+                    });
+
+                    const ctx = document.getElementById('myChart');
+
+new Chart(ctx, {
+  type: 'line',
+  data: {
+    labels: months_year_label,
+    datasets: [{
+      label: 'Systolic',
+      data: systolic,
+      borderWidth: 1
+    },
+    {
+      label: 'diastolic',
+      data: diastolic,
+      borderWidth: 1
+    }],
+    tension: 1
+  },
+  options: {
+    scales: {
+      y: {
+        beginAtZero: true
+      }
+    }
+  }
+});
+
+
+
+
+                    if (jess.length) {
+                        jess.forEach(item =>{
+                            document.getElementById("patient-list").innerHTML += `<div class="patients-list-item-container">
+        <div class="pic-age">
+            <div class="patient-picture"></div>
+            <div class="name-sex-demographic">
+                <div class="patient-name">${item.name}</div>
+                <div class="sex-demographics">${item.gender}, ${item.age}</div>
+            </div>
+        </div>
+        <div class="horizontal-elipsis"></div>
+    </div>`
+    if (item.gender === "Female"){
+        document.getElementById("gender-icon-id").setAttribute("class", "female-gender-icon");
+    }
+    document.getElementById("dob-value-id").innerText = item.date_of_birth;
+    document.getElementById("gender-value-id").innerText = item.gender;
+    document.getElementById("contact-value-id").innerText = item.phone_number;
+    document.getElementById("emergency-value-id").innerText = item.emergency_contact;
+    item.lab_results.forEach(test=>{
+        document.getElementById("tests-id").innerHTML += `<li class="lab-record-data-container">
+                <div  class="test-title">${test}</div>
+                <div class="download-btn"></div>
+            </li>`;
+    })
+
+    document.getElementById("insurance-value-id").innerText = item.insurance_type;
+    document.getElementById("respiratory-value").innerText = `${item.diagnosis_history[0].respiratory_rate.value} bpm`;
+    document.getElementById("temperature-value").innerText = `${item.diagnosis_history[0].temperature.value} °F`;
+    document.getElementById("heart-value").innerText = `${item.diagnosis_history[0].heart_rate.value} bpm`;
+    item.diagnostic_list.forEach(test=>{
+        document.getElementById("diagnostic-table-body").innerHTML += `<tr>
+                            <td>${test.name}</td>
+                            <td>${test.description}</td>
+                            <td>${test.status}</td>
+                        </tr>`;
+    })
+    document.getElementById("details-patient-name").innerText = item.name;
+                        })
+                    }
+                    // data.forEach(item => {
+                    //     const row = document.createElement('tr');
+                    //     const idCell = document.createElement('td');
+                    //     const titleCell = document.createElement('td');
+                    //     const bodyCell = document.createElement('td');
+
+                    //     idCell.textContent = item.id;
+                    //     titleCell.textContent = item.title;
+                    //     bodyCell.textContent = item.body;
+
+                    //     row.appendChild(idCell);
+                    //     row.appendChild(titleCell);
+                    //     row.appendChild(bodyCell);
+                    //     tableBody.appendChild(row);
+                    // });
+                } catch (error) {
+                    console.error('Error fetching data:', error);
+                }
+            };
+        fetchData();
+    })
+</script>
+</html>
